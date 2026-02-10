@@ -36,15 +36,15 @@ The primary objectives of this project are to:
 ## 🌐 API Details
 
 ### Base URL
-https://createtestuser.in
+https://xxxxxxxxxxxxxxx
 
 
 ### Endpoint Under Test
-POST /automation-campus/disabled/create/user
+POST /autxxxxxxxxxx-cxxxxxxxs/disaxxxxxx
 
 
 ### Mandatory Header
-roll-number: 250845920082
+roll-number: 2xxxxxxxxxxx
 
 
 > ⚠️ Any request executed **without this header** is considered invalid and does **not receive evaluation credit**.
@@ -62,8 +62,8 @@ Bajaj-Health-Automation-NEW
 ### Environment Variables (Demo Data)
 ```json
 {
-  "baseUrl": "https://createtestuser.in",
-  "rollNumber": "250845920082"
+  "baseUrl": "https://crxxxxxxxxxxx",
+  "rollNumber": "25xxxxxxxxxx"
 }
 Select this environment before executing any request.
 
@@ -71,10 +71,10 @@ Select this environment before executing any request.
 The following demo data is used consistently across test cases to ensure reproducibility:
 
 Field	Demo Value
-firstName	Shashank
-lastName	Mankar
-phoneNumber	7770010001
-emailId	shashank250845920082@gmail.com
+firstName	Shxxxxxx
+lastName	Maxxxx
+phoneNumber	7770xx
+emailId	shxxxxxxhxxxxxxxxxxx@gmail.com
 Additional demo values are derived from this baseline to test duplicates and validation failures.
 
 ✅ Implemented Test Cases
@@ -93,10 +93,10 @@ A total of 7 test cases have been implemented, covering functional, negative, an
 Request Body
 
 {
-  "firstName": "Shashank",
-  "lastName": "Mankar",
-  "phoneNumber": 7770010001,
-  "emailId": "shashank250845920082@gmail.com"
+  "firstName": "Sxxxxxxxxxxk",
+  "lastName": "Maxxxxxr",
+  "phoneNumber": 7770xxxxxxxxxxxx01,
+  "emailId": "shaxxxxxshxxxxxxxxxxxx845xxxxxxxxx82@gmail.com"
 }
 Expected Result
 
