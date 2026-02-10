@@ -1,84 +1,85 @@
-# Bajaj Health Automation Challenge – API Testing (Postman)
+# Bajaj Health Automation Challenge – Demo API Testing (Postman)
 
 ## 📌 Project Overview
 
-This repository contains a **comprehensive API automation test suite** created for the **Bajaj Health Automation Challenge**.  
-The solution validates the **Create User API** using **Postman**, with strong emphasis on **business rules**, **authorization enforcement**, **negative testing**, and **HTTP contract validation**.
+This repository contains a **demo-safe API automation test suite** created for the **Bajaj Health Automation Challenge**.  
+All requests, credentials, URLs, and payloads have been intentionally replaced with **non-production demo data** to ensure **safe sharing and public GitHub visibility**.
 
-The implementation reflects **enterprise QA practices**, including:
-- Environment-based configuration
-- Header-driven authorization
-- Data-driven negative scenarios
-- Clear test intent and traceability
+The test suite validates a **Create User API** using **Postman**, covering functional correctness, authorization checks, business rules, input validation, and HTTP protocol compliance.
 
 ---
 
 ## 🎯 Objective
 
-The primary objectives of this project are to:
+The objectives of this demo project are to:
 
-- Validate the **Create User** API functionality
-- Implement **as many test cases as possible**, beyond the provided hints
-- Ensure **roll-number header enforcement** for evaluator credit
-- Demonstrate **real-world API testing maturity**
+- Demonstrate structured **API test design**
+- Implement **positive and negative test cases**
+- Enforce mandatory **roll-number header validation**
+- Showcase **enterprise QA practices** using Postman
+- Provide a **safe, reproducible demo** without real user data
 
 ---
 
 ## 🧰 Tools & Technologies
 
 - **Postman** – API testing and automation
-- **REST APIs** – HTTP-based service testing
+- **REST APIs** – HTTP-based service validation
 - **JSON** – Request and response payloads
-- **Postman Environments** – Configuration abstraction
+- **Postman Environments** – Runtime configuration management
 
 ---
 
-## 🌐 API Details
+## 🌐 Demo API Details
 
-### Base URL
-https://xxxxxxxxxxxxxxx
+> ⚠️ **Important:**  
+> This repository uses **demo endpoints and demo credentials only**.  
+> The API URL below is for demonstration and documentation purposes.
+
+### Demo Base URL
+https://example-api.test
 
 
 ### Endpoint Under Test
-POST /autxxxxxxxxxx-cxxxxxxxs/disaxxxxxx
+POST /automation-campus/disabled/create/user
 
 
 ### Mandatory Header
-roll-number: 2xxxxxxxxxxx
+roll-number: DEMO_ROLL_0001
 
 
-> ⚠️ Any request executed **without this header** is considered invalid and does **not receive evaluation credit**.
+Any request executed without this header is expected to fail with an authorization error.
 
 ---
 
-## 🔧 Environment Setup (Demo Configuration)
+## 🔧 Environment Setup (Demo)
 
-Create a **Postman Environment** with the following values:
+Create a **Postman Environment** with the following configuration:
 
 ### Environment Name
-Bajaj-Health-Automation-NEW
+Bajaj-Health-Automation-DEMO
 
 
-### Environment Variables (Demo Data)
+### Environment Variables
 ```json
 {
-  "baseUrl": "https://crxxxxxxxxxxx",
-  "rollNumber": "25xxxxxxxxxx"
+  "baseUrl": "https://example-api.test",
+  "rollNumber": "DEMO_ROLL_0001"
 }
-Select this environment before executing any request.
+Ensure this environment is selected before running any request.
 
-📂 Test Data (Demo Data Used)
-The following demo data is used consistently across test cases to ensure reproducibility:
+📂 Demo Test Data
+All test cases use the following demo data:
 
 Field	Demo Value
-firstName	Shxxxxxx
-lastName	Maxxxx
-phoneNumber	7770xx
-emailId	shxxxxxxhxxxxxxxxxxx@gmail.com
-Additional demo values are derived from this baseline to test duplicates and validation failures.
+firstName	Demo
+lastName	User
+phoneNumber	9000000001
+emailId	demo.user1@example.com
+Additional demo values are derived from this baseline to validate duplicate and negative scenarios.
 
 ✅ Implemented Test Cases
-A total of 7 test cases have been implemented, covering functional, negative, and edge scenarios.
+The Postman collection implements 7 demo test cases, covering functional, negative, and protocol scenarios.
 
 #	Test Case	Category
 1	Happy Path – Create Valid User	Functional
@@ -88,34 +89,34 @@ A total of 7 test cases have been implemented, covering functional, negative, an
 5	Missing firstName	Mandatory Field
 6	Invalid Email Format	Format Validation
 7	GET Method Not Allowed	HTTP Protocol
-🧪 Test Case Details with Demo Data
+🧪 Test Case Details (Demo)
 1️⃣ Happy Path – Create Valid User
 Request Body
 
 {
-  "firstName": "Sxxxxxxxxxxk",
-  "lastName": "Maxxxxxr",
-  "phoneNumber": 7770xxxxxxxxxxxx01,
-  "emailId": "shaxxxxxshxxxxxxxxxxxx845xxxxxxxxx82@gmail.com"
+  "firstName": "Demo",
+  "lastName": "User",
+  "phoneNumber": 9000000001,
+  "emailId": "demo.user1@example.com"
 }
 Expected Result
 
 HTTP 200 OK
 
-User created successfully
+User successfully created
 
 2️⃣ Missing roll-number Header
 Condition
 
-roll-number header is intentionally removed
+roll-number header omitted
 
 Request Body
 
 {
-  "firstName": "NoRoll",
-  "lastName": "User",
-  "phoneNumber": 7770010002,
-  "emailId": "noroll@gmail.com"
+  "firstName": "Demo",
+  "lastName": "NoHeader",
+  "phoneNumber": 9000000002,
+  "emailId": "demo.noheader@example.com"
 }
 Expected Result
 
@@ -129,16 +130,14 @@ Same phone number as Happy Path
 Request Body
 
 {
-  "firstName": "Duplicate",
-  "lastName": "Phone",
-  "phoneNumber": 7770010001,
-  "emailId": "duplicatephone@gmail.com"
+  "firstName": "Demo",
+  "lastName": "DuplicatePhone",
+  "phoneNumber": 9000000001,
+  "emailId": "demo.duplicatephone@example.com"
 }
 Expected Result
 
 HTTP 400 Bad Request
-
-Message: phone number already used
 
 4️⃣ Duplicate Email
 Condition
@@ -148,16 +147,14 @@ Same email as Happy Path
 Request Body
 
 {
-  "firstName": "Duplicate",
-  "lastName": "Email",
-  "phoneNumber": 7770010003,
-  "emailId": "shashank250845920082@gmail.com"
+  "firstName": "Demo",
+  "lastName": "DuplicateEmail",
+  "phoneNumber": 9000000003,
+  "emailId": "demo.user1@example.com"
 }
 Expected Result
 
 HTTP 400 Bad Request
-
-Message: email already used
 
 5️⃣ Missing firstName
 Condition
@@ -168,14 +165,12 @@ Request Body
 
 {
   "lastName": "NoFirstName",
-  "phoneNumber": 7770010004,
-  "emailId": "nofirst@gmail.com"
+  "phoneNumber": 9000000004,
+  "emailId": "demo.nofirstname@example.com"
 }
 Expected Result
 
 HTTP 400 Bad Request
-
-Validation error for required field
 
 6️⃣ Invalid Email Format
 Condition
@@ -185,20 +180,16 @@ Invalid email structure
 Request Body
 
 {
-  "firstName": "Invalid",
-  "lastName": "Email",
-  "phoneNumber": 7770010005,
+  "firstName": "Demo",
+  "lastName": "InvalidEmail",
+  "phoneNumber": 9000000005,
   "emailId": "invalidemail"
 }
 Expected Result
 
-Validation failure detected
+Validation error detected
 
-Observed Response: 500 Internal Server Error
-
-QA Insight
-
-Validation exists, but error is incorrectly mapped to 500 instead of 400. This is a backend exception-handling issue, not a test failure.
+Observed Response may be 500 Internal Server Error (demo backend behavior)
 
 7️⃣ GET Method Not Allowed
 Condition
@@ -212,18 +203,17 @@ Expected / Observed Result
 
 HTTP 404 Resource Not Found
 
-Explanation
-
-The backend does not expose a GET route for this endpoint, so routing fails before method validation.
+This indicates that the GET route is not exposed at the routing layer.
 
 ▶️ Execution Instructions
 Open Postman
 
-Import the Postman collection JSON
+Import the demo Postman collection JSON
 
 Create and select the environment:
 
-Bajaj-Health-Automation-NEW
+Bajaj-Health-Automation-DEMO
 Execute requests sequentially from top to bottom
 
 Sequential execution is required due to data dependencies.
+
