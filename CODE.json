@@ -1,0 +1,143 @@
+{
+  "info": {
+    "_postman_id": "bajaj-health-automation-demo",
+    "name": "Bajaj Health Automation Challenge - DEMO",
+    "description": "Demo-safe API validation for Create User endpoint covering happy path, negative, boundary, and business rule scenarios.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Happy Path - Create Valid User (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Demo\",\n  \"lastName\": \"User\",\n  \"phoneNumber\": 9000000001,\n  \"emailId\": \"demo.user1@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "2. Missing roll-number Header (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Demo\",\n  \"lastName\": \"NoHeader\",\n  \"phoneNumber\": 9000000002,\n  \"emailId\": \"demo.noheader@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "3. Duplicate Phone Number (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Demo\",\n  \"lastName\": \"DuplicatePhone\",\n  \"phoneNumber\": 9000000001,\n  \"emailId\": \"demo.duplicatephone@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "4. Duplicate Email (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Demo\",\n  \"lastName\": \"DuplicateEmail\",\n  \"phoneNumber\": 9000000003,\n  \"emailId\": \"demo.user1@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "5. Missing firstName (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lastName\": \"NoFirstName\",\n  \"phoneNumber\": 9000000004,\n  \"emailId\": \"demo.nofirstname@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "6. Invalid Email Format (Demo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cookie", "value": "isUserLoggedIn=true" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Demo\",\n  \"lastName\": \"InvalidEmail\",\n  \"phoneNumber\": 9000000005,\n  \"emailId\": \"invalidemail\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    },
+    {
+      "name": "7. GET Method Not Allowed (Demo)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "roll-number", "value": "{{rollNumber}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/automation-campus/disabled/create/user",
+          "host": ["{{baseUrl}}"],
+          "path": ["automation-campus", "disabled", "create", "user"]
+        }
+      }
+    }
+  ]
+}
